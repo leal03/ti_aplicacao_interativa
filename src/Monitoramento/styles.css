@@ -1,0 +1,113 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Double Struck', sans-serif;
+  background-image: url('../assets/Design_sem_nome.jpg');
+  background-size: cover;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.logo h1 {
+  font-size: 24px;
+  color: #000000;
+}
+
+.titulo2 {
+  margin-top: 70px;
+  font-size: 40px;
+  color: #c0af9b;
+}
+
+.separator {
+  border: none;
+  height: 3px;
+  background-color: #bf7308;
+  margin: 20px 0;
+}
+
+main {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.menu ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+}
+
+.menu ul li {
+  display: inline-block;
+  margin: 0 10px;
+  border-bottom: 1px solid transparent;
+}
+
+.menu ul li a {
+  display: inline-block;
+  padding: 10px 20px;
+  color: #454545;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 5px;
+  position: relative;
+}
+
+.menu ul li:hover {
+  border-bottom: 1px solid #080808;
+}
+
+.submenu {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.submenu li {
+  background-color: #FFA500;
+  border-radius: 20px;
+  margin-bottom: 150px;
+  width: 400px;
+  padding: 8px 20px;
+  position: relative;
+}
+
+.submenu a {
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.submenu .arrow {
+  margin-left: auto;
+}
+
+.submenu .submenu-info {
+  width: 100%;
+  background-color: #fff;
+  border-radius: 5px;
+  margin-top: 10px;
+}

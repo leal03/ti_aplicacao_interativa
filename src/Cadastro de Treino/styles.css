@@ -1,0 +1,117 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Double Struck', sans-serif;
+    background-image: url('../assets/Design_sem_nome.jpg');
+    background-size: cover;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+  }
+  
+  .logo h1 {
+    font-size: 24px;
+    color: #000000;
+  }
+  
+  .titulo2 {
+    margin-top: 70px;
+    font-size: 40px;
+    color: #c0af9b;
+  }
+  
+  .separator {
+    border: none;
+    height: 3px;
+    background-color: #bf7308;
+    margin: 20px 0;
+  }
+  
+  main {
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .menu ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+  }
+  
+  .menu ul li {
+    display: inline-block;
+    margin: 0 10px;
+    border-bottom: 1px solid transparent;
+  }
+  
+  .menu ul li a {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #454545;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    position: relative;
+  }
+  
+  .menu ul li:hover {
+    border-bottom: 1px solid #080808;
+  }
+  
+  main {
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    width: 400px;
+    margin: 0 auto;
+  }
+  
+  
+  .formulario {
+    text-align: left;
+  }
+  
+  .formulario label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .formulario input[type="text"],
+  .formulario input[type="number"],
+  .formulario textarea {
+    width: 400px;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    box-sizing: border-box;
+    outline: none;
+    background-color: #d6d6d6;
+  }
+  
+  .formulario input[type="submit"] {
+    background-color: #FFA500;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  
