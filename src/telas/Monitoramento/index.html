@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monitoramento iFitness</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <img src="../assets/Logo_iFitness.png" alt="IFitness Logo">
+      </div>
+    </header>
+    <hr class="separator">
+    <nav class="menu">
+      <ul>
+        <li><a href="#">REGISTRAR TREINO</a></li>
+        <li><a href="#">MONITORAMENTO</a></li>
+        <li><a href="#">PLANO ALIMENTAR</a></li>
+      </ul>
+    </nav>
+    <h2 class="titulo2">MONITORAMENTO</h2>
+    <ul class="submenu">
+      <li>
+        <a href="#">MUSCULAÇÃO<span class="arrow">&#9660;</span></a>
+        <div class="content hidden" id="musculacao">
+        </div>
+      </li>
+      <li>
+        <a href="#">YOGA<span class="arrow">&#9660;</span></a>
+        <div class="content hidden" id="yoga">
+        </div>
+      </li>
+      <li>
+        <a href="#">CARDIO<span class="arrow">&#9660;</span></a>
+        <div class="content hidden" id="cardio">
+        </div>
+      </li>
+      <li>
+        <a href="#">OUTRO<span class="arrow">&#9660;</span></a>
+        <div class="content hidden" id="outro">
+        </div>
+      </li>
+    </ul>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('/api/workouts')
+        .then(response => response.json())
+        .then(workouts => {
+          const musculacao = document.getElementById('musculacao');
+          const yoga = document.getElementById('yoga');
+          const cardio = document.getElementById('cardio');
+          const outro = document.getElementById('outro');
+
+          workouts.forEach(workout => {
+            const div = document.createElement('div');
+            div.innerHTML = `
+              <p>Tipo de Treino: ${workout.workoutType}</p>
+              <p>Duração: ${workout.duration}</p>
+              <p>Quantidade: ${workout.quantity}</p>
+              <p>Exercícios: ${workout.exercises}</p>
+            `;
+
+            switch (workout.workoutType.toLowerCase()) {
+              case 'musculação':
+                musculacao.appendChild(div);
+                break;
+              case 'yoga':
+                yoga.appendChild(div);
+                break;
+              case 'cardio':
+                cardio.appendChild(div);
+                break;
+              default:
+                outro.appendChild(div);
+            }
+          });
+        });
+
+      fetch('/api/food-plans')
+        .then(response => response.json())
+        .then(foodPlans => {
+          const outro = document.getElementById('outro');
+
+          foodPlans.forEach(plan => {
+            const div = document.createElement('div');
+            div.innerHTML = `
+              <p>Tipo de Alimentação: ${plan.foodType}</p>
+              <p>Quantidade de Refeições ao Dia: ${plan.mealsPerDay}</p>
+              <p>Suplementação: ${plan.supplementation}</p>
+              <p>Alimentos Ingeridos Frequentemente: ${plan.frequentFoods}</p>
+            `;
+
+            outro.appendChild(div);
+          });
+        });
+    });
+  </script>
+</body>
+
+</html>

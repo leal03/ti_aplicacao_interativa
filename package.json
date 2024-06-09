@@ -1,0 +1,26 @@
+{
+  "name": "ti_aplicacao_interativa",
+  "version": "1.0.0",
+  "description": "**IFitness** é um aplicativo interativo projetado para melhorar a saúde física e mental através de exercícios, dicas de nutrição e práticas de bem-estar. O aplicativo visa oferecer uma solução personalizada e interativa para o monitoramento da saúde, promovendo hábitos saudáveis e incentivando a prática regular de atividades físicas. Resultados preliminares indicam um aumento significativo na adoção de um estilo de vida saudável entre os usuários, bem como melhorias na saúde e bem-estar geral.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leal03/ti_aplicacao_interativa.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leal03/ti_aplicacao_interativa/issues"
+  },
+  "homepage": "https://github.com/leal03/ti_aplicacao_interativa#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mysql2": "^3.10.0",
+    "sequelize": "^6.37.3"
+  }
+}
