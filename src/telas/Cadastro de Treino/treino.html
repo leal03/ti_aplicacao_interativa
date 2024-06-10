@@ -19,14 +19,14 @@
     <nav class="menu">
       <ul>
         <li><a href="#">REGISTRAR TREINO</a></li>
-        <li><a href="#">MONITORAMENTO</a></li>
-        <li><a href="#">PLANO ALIMENTAR</a></li>
+        <li><a href="../Monitoramento/index.html">MONITORAMENTO</a></li>
+        <li><a href="../Cadastro de Alimentação/alimentacao.html">PLANO ALIMENTAR</a></li>
       </ul>
     </nav>
 
     <main>
         <h2 class="titulo2">CADASTRO DE TREINO</h2>
-        <form class="formulario" action="/api/workouts" method="post">
+        <form class="formulario" action="http://localhost:3000/api/workouts" method="post">
           <label for="tipoTreino">TIPO DE TREINO:</label>
           <input type="text" id="tipoTreino" name="workoutType" required><br><br>
           
