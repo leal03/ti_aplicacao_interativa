@@ -18,3 +18,13 @@ exports.getFoodPlans = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+
+exports.deleteFoodPlan = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await FoodPlan.destroy({ where: { id } });
+    res.status(204).send();
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};

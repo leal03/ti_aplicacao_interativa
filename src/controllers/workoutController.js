@@ -18,3 +18,13 @@ exports.getWorkouts = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+
+exports.deleteWorkout = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await Workout.destroy({ where: { id } });
+    res.status(204).send();
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};

@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <p>Duração: ${workout.duration}</p>
           <p>Quantidade: ${workout.quantity}</p>
           <p>Exercícios: ${workout.exercises}</p>
+          <button onclick="deleteWorkout(${workout.id})">Excluir</button>
         `;
         treinosContainer.appendChild(div);
       });
@@ -38,8 +39,39 @@ document.addEventListener('DOMContentLoaded', function() {
           <p>Quantidade de Refeições ao Dia: ${plan.mealsPerDay}</p>
           <p>Suplementação: ${plan.supplements}</p>
           <p>Alimentos Ingeridos Frequentemente: ${plan.frequentFoods}</p>
+          <button onclick="deleteFoodPlan(${plan.id})">Excluir</button>
         `;
         alimentacaoContainer.appendChild(div);
       });
     });
+
+  // Função para excluir treino
+  window.deleteWorkout = function(id) {
+    fetch(`http://localhost:3000/api/workouts/${id}`, {
+      method: 'DELETE'
+    })
+    .then(response => {
+      if (response.ok) {
+        alert('Treino excluído com sucesso');
+        location.reload(); // Recarrega a página para atualizar a lista
+      } else {
+        alert('Erro ao excluir treino');
+      }
+    });
+  };
+
+  // Função para excluir plano alimentar
+  window.deleteFoodPlan = function(id) {
+    fetch(`http://localhost:3000/api/foodplans/${id}`, {
+      method: 'DELETE'
+    })
+    .then(response => {
+      if (response.ok) {
+        alert('Plano alimentar excluído com sucesso');
+        location.reload(); // Recarrega a página para atualizar a lista
+      } else {
+        alert('Erro ao excluir plano alimentar');
+      }
+    });
+  };
 });
