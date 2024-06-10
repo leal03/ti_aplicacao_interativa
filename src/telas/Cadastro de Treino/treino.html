@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>iFitness</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
   <div class="container">
     <header>
@@ -23,28 +21,67 @@
         <li><a href="../Cadastro de Alimentação/alimentacao.html">PLANO ALIMENTAR</a></li>
       </ul>
     </nav>
-
     <main>
-        <h2 class="titulo2">CADASTRO DE TREINO</h2>
-        <form class="formulario" action="http://localhost:3000/api/workouts" method="post">
-          <label for="tipoTreino">TIPO DE TREINO:</label>
-          <input type="text" id="tipoTreino" name="workoutType" required><br><br>
-          
-          <label for="duracao">DURAÇÃO:</label>
-          <input type="text" id="duracao" name="duration" required><br><br>
-          
-          <label for="quantidade">QUANTIDADE:</label>
-          <input type="number" id="quantidade" name="quantity" required><br><br>
-          
-          <label for="exercicios">EXERCÍCIOS:</label>
-          <textarea id="exercicios" name="exercises" rows="4" cols="50" required></textarea><br><br>
-          
-          <input type="submit" value="REGISTRAR">
-        </form>
-      </main>
+      <h2 class="titulo2">CADASTRO DE TREINO</h2>
+      <form class="formulario" id="workoutForm">
+        <label for="tipoTreino">TIPO DE TREINO:</label>
+        <input type="text" id="tipoTreino" name="workoutType" required><br><br>
+        
+        <label for="duracao">DURAÇÃO:</label>
+        <input type="text" id="duracao" name="duration" required><br><br>
+        
+        <label for="quantidade">QUANTIDADE:</label>
+        <input type="number" id="quantidade" name="quantity" required><br><br>
+        
+        <label for="exercicios">EXERCÍCIOS:</label>
+        <textarea id="exercicios" name="exercises" rows="4" cols="50" required></textarea><br><br>
+        
+        <input type="submit" value="REGISTRAR">
+      </form>
+      <div id="message" style="margin-top: 20px; display: none;"></div> <!-- Elemento de mensagem -->
+    </main>
   </div>
 
-  <script src="script.js"></script>
-</body>
+  <script>
+    document.getElementById('workoutForm').addEventListener('submit', async function(event) {
+      event.preventDefault(); // Impede o envio padrão do formulário
 
+      // Coleta os dados do formulário
+      const formData = new FormData(event.target);
+      const formObject = Object.fromEntries(formData.entries());
+
+      try {
+        // Envia a requisição para o servidor
+        const response = await fetch('http://localhost:3000/api/workouts', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formObject),
+        });
+
+        const messageElement = document.getElementById('message');
+
+        if (response.ok) {
+          const responseData = await response.json();
+          messageElement.textContent = responseData.message;
+          messageElement.style.display = 'block';
+          messageElement.style.color = 'green'; // Define a cor da mensagem de sucesso
+          event.target.reset(); // Limpa os campos do formulário
+        } else {
+          const errorData = await response.json();
+          messageElement.textContent = 'Erro: ' + errorData.error;
+          messageElement.style.display = 'block';
+          messageElement.style.color = 'red'; // Define a cor da mensagem de erro
+        }
+      } catch (error) {
+        console.error('Erro ao enviar a requisição:', error);
+        const messageElement = document.getElementById('message');
+        messageElement.textContent = 'Erro ao enviar a requisição';
+        messageElement.style.display = 'block';
+        messageElement.style.color = 'red'; // Define a cor da mensagem de erro
+      }
+    });
+  </script>
+</body>
 </html>

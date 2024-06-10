@@ -20,9 +20,12 @@ const Workout = sequelize.define('Workout', {
     allowNull: false,
   },
   exercises: {
-    type: DataTypes.TEXT,
+    type: DataTypes.STRING,
     allowNull: false,
   },
+}, {
+  tableName: 'workouts', // especifica o nome da tabela
+  timestamps: true
 });
 
 module.exports = Workout;
