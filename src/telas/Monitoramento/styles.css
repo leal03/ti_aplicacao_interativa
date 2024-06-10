@@ -75,8 +75,7 @@ main {
   list-style-type: none;
   padding: 0;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   border-radius: 5px;
@@ -86,8 +85,8 @@ main {
 .submenu li {
   background-color: #FFA500;
   border-radius: 20px;
-  margin-bottom: 150px;
-  width: 400px;
+  margin-bottom: 20px;
+  width: 80%;
   padding: 8px 20px;
   position: relative;
 }
@@ -110,4 +109,8 @@ main {
   background-color: #fff;
   border-radius: 5px;
   margin-top: 10px;
+}
+
+.hidden {
+  display: none;
 }

@@ -16,7 +16,7 @@ const FoodPlan = sequelize.define('FoodPlan', {
     allowNull: false,
   },
   supplements: {
-    type: DataTypes.STRING,
+    type: DataTypes.STRING, // Corrigido para aceitar string
     allowNull: false,
   },
   frequentFoods: {
