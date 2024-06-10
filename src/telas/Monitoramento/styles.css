@@ -117,7 +117,32 @@ main {
 
 .content div {
   background-color: white;
-  padding: 10px;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.content p {
+  margin: 5px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.content button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 10px;
+  font-size: 14px;
+  color: white;
+  background-color: #e74c3c;
+  border: none;
   border-radius: 5px;
-  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.content button:hover {
+  background-color: #c0392b;
 }

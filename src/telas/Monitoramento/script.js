@@ -18,10 +18,10 @@ document.addEventListener('DOMContentLoaded', function() {
       workouts.forEach(workout => {
         const div = document.createElement('div');
         div.innerHTML = `
-          <p>Tipo de Treino: ${workout.workoutType}</p>
-          <p>Duração: ${workout.duration}</p>
-          <p>Quantidade: ${workout.quantity}</p>
-          <p>Exercícios: ${workout.exercises}</p>
+          <p><strong>Tipo de Treino:</strong> ${workout.workoutType}</p>
+          <p><strong>Duração:</strong> ${workout.duration}</p>
+          <p><strong>Quantidade:</strong> ${workout.quantity}</p>
+          <p><strong>Exercícios:</strong> ${workout.exercises}</p>
           <button onclick="deleteWorkout(${workout.id})">Excluir</button>
         `;
         treinosContainer.appendChild(div);
@@ -35,10 +35,10 @@ document.addEventListener('DOMContentLoaded', function() {
       foodPlans.forEach(plan => {
         const div = document.createElement('div');
         div.innerHTML = `
-          <p>Tipo de Alimentação: ${plan.foodType}</p>
-          <p>Quantidade de Refeições ao Dia: ${plan.mealsPerDay}</p>
-          <p>Suplementação: ${plan.supplements}</p>
-          <p>Alimentos Ingeridos Frequentemente: ${plan.frequentFoods}</p>
+          <p><strong>Tipo de Alimentação:</strong> ${plan.foodType}</p>
+          <p><strong>Quantidade de Refeições ao Dia:</strong> ${plan.mealsPerDay}</p>
+          <p><strong>Suplementação:</strong> ${plan.supplements}</p>
+          <p><strong>Alimentos Ingeridos Frequentemente:</strong> ${plan.frequentFoods}</p>
           <button onclick="deleteFoodPlan(${plan.id})">Excluir</button>
         `;
         alimentacaoContainer.appendChild(div);
