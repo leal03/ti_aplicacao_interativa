@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>iFitness</title>
+  <title>iFitness - Cadastro de Alimentação</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
   <div class="container">
     <header>
@@ -18,34 +16,72 @@
     <hr class="separator">
     <nav class="menu">
       <ul>
-        <li><a href="../Cadastro de Treino/treino.html">REGISTRAR TREINO</a></li>
+        <li><a href="../CadastroTreino/cadastrotreino.html">REGISTRAR TREINO</a></li>
         <li><a href="../Monitoramento/index.html">MONITORAMENTO</a></li>
         <li><a href="#">PLANO ALIMENTAR</a></li>
       </ul>
     </nav>
-
     <main>
-        <h2 class="titulo2">CADASTRO DE ALIMENTAÇÃO</h2>
-        <form class="formulario" action="/api/food-plans" method="post">
-          <label for="tipoAlimentacao">TIPO DE ALIMENTAÇÃO:</label>
-          <input type="text" id="tipoAlimentacao" name="foodType" required><br><br>
-          
-          <label for="quantidade">QUANTIDADE DE REFEIÇÕES AO DIA:</label>
-          <input type="text" id="quantidade" name="mealsPerDay" required><br><br>
-          
-          <label for="suplementacao">SUPLEMENTAÇÃO:</label>
-          <input type="number" id="suplementacao" name="supplementation" required><br><br>
-          
-          <label for="alimentos">ALIMENTOS INGERIDOS FREQUENTEMENTE:</label>
-          <textarea id="alimentos" name="frequentFoods" rows="4" cols="50" required></textarea><br><br>
-          
-          <input type="submit" value="REGISTRAR">
-        </form>
-      </main>
+      <h2 class="titulo2">CADASTRO DE ALIMENTAÇÃO</h2>
+      <form class="formulario" id="foodPlanForm">
+        <label for="tipoAlimentacao">TIPO DE ALIMENTAÇÃO:</label>
+        <input type="text" id="tipoAlimentacao" name="foodType" required><br><br>
+
+        <label for="quantidade">QUANTIDADE DE REFEIÇÕES AO DIA:</label>
+        <input type="number" id="quantidade" name="mealsPerDay" required><br><br>
+
+        <label for="suplementacao">SUPLEMENTAÇÃO:</label>
+        <input type="text" id="suplementacao" name="supplements" required><br><br>
+
+        <label for="alimentos">ALIMENTOS INGERIDOS FREQUENTEMENTE:</label>
+        <textarea id="alimentos" name="frequentFoods" rows="4" cols="50" required></textarea><br><br>
+
+        <input type="submit" value="REGISTRAR">
+      </form>
+      <div id="message" style="margin-top: 20px; display: none;"></div> <!-- Elemento de mensagem -->
+    </main>
   </div>
 
+  <script>
+    document.getElementById('foodPlanForm').addEventListener('submit', async function(event) {
+      event.preventDefault(); // Impede o envio padrão do formulário
 
-  <script src="script.js"></script>
+      // Coleta os dados do formulário
+      const formData = new FormData(event.target);
+      const formObject = Object.fromEntries(formData.entries());
+
+      try {
+        // Envia a requisição para o servidor
+        const response = await fetch('http://localhost:3000/api/foodplans', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formObject),
+        });
+
+        const messageElement = document.getElementById('message');
+
+        if (response.ok) {
+          const responseData = await response.json();
+          messageElement.textContent = responseData.message;
+          messageElement.style.display = 'block';
+          messageElement.style.color = 'green'; // Define a cor da mensagem de sucesso
+          event.target.reset(); // Limpa os campos do formulário
+        } else {
+          const errorData = await response.json();
+          messageElement.textContent = 'Erro: ' + errorData.error;
+          messageElement.style.display = 'block';
+          messageElement.style.color = 'red'; // Define a cor da mensagem de erro
+        }
+      } catch (error) {
+        console.error('Erro ao enviar a requisição:', error);
+        const messageElement = document.getElementById('message');
+        messageElement.textContent = 'Erro ao enviar a requisição';
+        messageElement.style.display = 'block';
+        messageElement.style.color = 'red'; // Define a cor da mensagem de erro
+      }
+    });
+  </script>
 </body>
-
 </html>

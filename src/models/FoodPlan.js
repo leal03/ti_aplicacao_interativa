@@ -15,14 +15,17 @@ const FoodPlan = sequelize.define('FoodPlan', {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  supplementation: {
-    type: DataTypes.INTEGER,
+  supplements: {
+    type: DataTypes.STRING,
     allowNull: false,
   },
   frequentFoods: {
-    type: DataTypes.TEXT,
+    type: DataTypes.STRING,
     allowNull: false,
   },
+}, {
+  tableName: 'foodplans', // especifica o nome da tabela
+  timestamps: true
 });
 
 module.exports = FoodPlan;
