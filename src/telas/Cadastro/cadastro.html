@@ -10,7 +10,7 @@
     <div class="container">
         <img src="../assets/Logo_iFitness.png" alt="iFitness Logo" class="logo">
         <h2>Cadastro</h2>
-        <form action="http://localhost:3000/api/users" method="post" enctype="application/x-www-form-urlencoded">
+        <form id="cadastroForm" action="http://localhost:3000/api/users" method="post" enctype="application/x-www-form-urlencoded">
             <div class="form-group">
                 <label for="name">Nome:</label>
                 <input type="text" id="name" name="name" required>
@@ -39,5 +39,36 @@
         </form>
         <p>Já tem uma conta? <a href="../Login/login.html">Faça login</a></p>
     </div>
+    <script>
+        document.getElementById('cadastroForm').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+
+            // Coleta os dados do formulário
+            const formData = new FormData(event.target);
+            const formObject = Object.fromEntries(formData.entries());
+
+            try {
+                // Envia a requisição para o servidor
+                const response = await fetch(event.target.action, {
+                    method: event.target.method,
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new URLSearchParams(formObject).toString(),
+                });
+
+                if (response.ok) {
+                    // Redireciona para a página de login em caso de sucesso
+                    window.location.href = "../Login/login.html";
+                } else {
+                    const errorData = await response.json();
+                    alert('Erro: ' + errorData.error);
+                }
+            } catch (error) {
+                console.error('Erro ao enviar a requisição:', error);
+                alert('Erro ao enviar a requisição');
+            }
+        });
+    </script>
 </body>
 </html>

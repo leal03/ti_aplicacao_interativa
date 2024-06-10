@@ -10,7 +10,7 @@
     <div class="container">
         <img src="../assets/Logo_iFitness.png" alt="iFitness Logo" class="logo">
         <h2>Login</h2>
-        <form action="/api/login" method="post">
+        <form id="loginForm" action="http://localhost:3000/api/login" method="post">
             <div class="form-group">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
@@ -22,6 +22,45 @@
             <button type="submit" class="cta-button">Entrar</button>
         </form>
         <p>Não tem uma conta? <a href="../Cadastro/cadastro.html">Cadastre-se</a></p>
+        <div id="error-message" style="color: red; display: none;"></div> <!-- Mensagem de erro -->
     </div>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+
+            // Coleta os dados do formulário
+            const formData = new FormData(event.target);
+            const formObject = Object.fromEntries(formData.entries());
+
+            try {
+                // Envia a requisição para o servidor
+                const response = await fetch(event.target.action, {
+                    method: event.target.method,
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new URLSearchParams(formObject).toString(),
+                });
+
+                const errorMessageElement = document.getElementById('error-message');
+                
+                console.log('Status da resposta:', response.status); // Log do status da resposta
+                const responseData = await response.json();
+                console.log('Dados da resposta:', responseData); // Log dos dados da resposta
+
+                if (response.ok) {
+                    // Redireciona para a tela inicial em caso de sucesso
+                    window.location.href = "../Tela Inicial/telainicio.html";
+                    errorMessageElement.style.display = 'none'; // Esconde a mensagem de erro
+                } else {
+                    errorMessageElement.textContent = 'Erro: ' + responseData.error;
+                    errorMessageElement.style.display = 'block'; // Mostra a mensagem de erro
+                }
+            } catch (error) {
+                console.error('Erro ao enviar a requisição:', error);
+                alert('Erro ao enviar a requisição');
+            }
+        });
+    </script>
 </body>
 </html>
