@@ -39,3 +39,8 @@ A crescente preocupação com a saúde e o bem-estar da população, aliada ao a
 - **Acompanhamento de Progresso:** Ferramentas para monitoramento do progresso físico e de saúde dos usuários.
 - **Dicas de Nutrição:** Recomendações personalizadas de alimentação saudável.
 - **Práticas de Bem-Estar:** Sugestões de atividades e hábitos que promovem o bem-estar mental e emocional.
+
+## Instruções para executar a aplicação
+- Certifique-se de possuir o Node e o npm instalados em seu computador.
+- Clone o repositório para o seu computador.
+- No diretório da aplicação, execute o comando npm install para instalar as dependências necessárias.
