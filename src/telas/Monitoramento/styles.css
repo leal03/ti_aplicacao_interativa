@@ -89,7 +89,6 @@ main {
   width: 80%;
   padding: 8px 20px;
   position: relative;
-  cursor: pointer;
 }
 
 .submenu a {
@@ -105,41 +104,13 @@ main {
   margin-left: auto;
 }
 
-.content {
-  width: 97%;
+.submenu .submenu-info {
+  width: 100%;
   background-color: #fff;
   border-radius: 5px;
   margin-top: 10px;
-  padding: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 .hidden {
   display: none;
-}
-
-.workout-item, .foodplan-item {
-  background-color: #f9f9f9;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
-  text-align: left;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.workout-item p, .foodplan-item p {
-  margin: 5px 0;
-}
-
-.delete-button {
-  background-color: #FF0000;
-  color: #fff;
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
-  border-radius: 5px;
-  margin-left: 10px;
 }
